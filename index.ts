@@ -71,7 +71,12 @@ async function TodoList () {
                 }
             },
             when(answers){
-                return answers.options == 'Remove Item'
+                if (answers.options == 'Remove Item' && todo.length !=0){
+                    return true
+                }else{
+                    console.log('   There is nothing to delete ')
+                    return false
+                }
             },
         },
         {
@@ -79,7 +84,7 @@ async function TodoList () {
                 if (answers.options == 'Display Items' && todo.length){
                     console.log('   Your todo items are:')
                     todo.forEach(item=>console.log("    >>"+item))
-                }else{
+                }else if (answers.options != 'Remove Item'){
                     console.log('You have nothing todo')
                 }
             }
